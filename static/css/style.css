@@ -1,0 +1,79 @@
+body {
+	background: #cacaca;
+	padding: 20px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	width: 100%;
+	font-size: 100%;
+	background-color: #fff
+}
+
+h1 {
+	text-align: center;
+	font-size: 2rem;
+	/*text-shadow: 0.3rem 0.3rem 0.3rem #aaa;*/
+}
+
+.container {
+	margin: auto;
+	max-width: 900px;
+	margin: 0 auto;
+	/*border: 1px solid red;*/
+	padding: 0px;
+	text-align: center;
+} 
+
+* { box-sizing: border-box; }
+
+/* Create three equal columns that floats next to each other */
+
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+	max-width: 100%;
+	/*border: 1px solid green;*/
+}
+
+/* Clear floats after the columns */
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+
+
+@media screen and (max-width: 600px) {
+	.column {
+		width: 100%;  
+	}
+}
+
+/* Button */
+input[type=submit] {
+	background-color: #008CBA;
+	border: none;
+	color: white;
+	padding: 10px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	width: 100px; // only for IE8
+  	max-width: 100%;
+	border: 2px solid white;
+  	border-radius: 20px;
+}
+
+/* Input text fields */
+
+input[type=text] {
+  border: 2px solid white;
+  border-radius: 20px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}

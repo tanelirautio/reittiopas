@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<title>{{ title }}</title>
+	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+	<link rel="stylesheet" href="../static/css/style.css">
+	<link rel="stylesheet" href="../static/css/table.css">
+	<link rel="stylesheet" href="../static/css/autocomplete.css">
+
+	<script type="text/javascript" src="../static/js/check_form.js"></script>
+	<script type="text/javascript" src="../static/js/autocomplete.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+	<h1>REITTIOPAS</h1>
+
+	<form method="post" name="route_form" autocomplete="off" onsubmit="return required()" action="/" enctype="application/x-www-form-urlencoded">
+	<div class="row">
+		<div class="column" style="background-color:#fff;">
+			<div class="autocomplete">
+				<input id="origin" type="text" name="origin" placeholder="Lähtöpysäkki">
+			</div>
+		</div>
+		<div class="column" style="background-color:#fff;">
+			<div class="autocomplete">
+				<input id="destination" type="text" name="destination" placeholder="Päätepysäkki">
+			</div>
+		</div>
+		<div class="column" style="background-color:#fff;">
+			<input type="submit" value="Hae">
+		</div>
+	</div>
+	</form>
+</div>
+
+{% block results %}
+{% endblock %}
+
+<script>
+
+var stops = {{stops|tojson}};
+
+autocomplete(document.getElementById("origin"), stops);
+autocomplete(document.getElementById("destination"), stops);
+</script>
+
+</body>
