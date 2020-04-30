@@ -61,7 +61,7 @@ class Graph:
         if n in self.vert_dict:
             return self.vert_dict[n]
         else:
-            print("Vertex {} not found in graph".format(n))
+            #print("Vertex {} not found in graph".format(n))
             return None
 
     def add_edge(self, frm, to, cost = 0):
@@ -99,7 +99,7 @@ def create(data):
 import heapq
 
 def shortest(v, path):
-    print("Make shortest path from v.previous")
+    #print("Make shortest path from v.previous")
     if v.previous:
         path.append(v.previous.get_id())
         shortest(v.previous, path)

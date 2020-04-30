@@ -1,5 +1,5 @@
 from flask_table import Table, Col
-from routeplanner import parse
+import parse
 
 class RouteTable(Table):
 	icon = Col('',  th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': ''},)
@@ -126,8 +126,8 @@ def find_best_lines(path, data):
 		route_data[index].best_line = current_line
 		previous_line = current_line
 
-	for (index, route) in enumerate(route_data):
-		print(str(index) + ": " + str(route))
+	#for (index, route) in enumerate(route_data):
+	#	print(str(index) + ": " + str(route))
 
 	return route_data
 
@@ -186,7 +186,6 @@ def process_route_data(route_data, origin, destination):
 
 				t = TableEntry(c_line, c_start, c_end, c_time, c_intermediates)
 				table_entries.append(t)
-				print("huu")
 
 				c_line = route.best_line
 				c_start = route.start
@@ -203,7 +202,6 @@ def process_route_data(route_data, origin, destination):
 				c_time += route.time
 				c_intermediates.append(route.start)
 			t = TableEntry(c_line, c_start, c_end, c_time, c_intermediates)
-			print("haa")
 			table_entries.append(t)
 
 	table = RouteTable(table_entries)
@@ -223,9 +221,9 @@ def process_route_data(route_data, origin, destination):
 	# correct possible malformed tags
 	table_html = table_html.replace('&lt;', '<').replace('&gt;', '>').replace('&#34;', '"')
 
-	print("######")
-	print(table_html)
-	print("######")
+	#print("######")
+	#print(table_html)
+	#print("######")
 
 	return table_html
 
@@ -239,6 +237,6 @@ def get_summary_table(changes, time):
 		change_txt = "Matkalla " + str(changes) + " vaihtoa." 
 
 	summary = "<tr><td colspan=\"6\">" + change_txt + " Matka-aika yhteensä " + str(time) + ".</td></tr>"
-	print(summary)
+	#print(summary)
 
 	return summary

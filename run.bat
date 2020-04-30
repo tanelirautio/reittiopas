@@ -1,3 +1,3 @@
 @echo off
 set FLASK_ENV=development
-python run.py
+python routeplanner/main.py

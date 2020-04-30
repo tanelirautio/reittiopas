@@ -1,6 +1,6 @@
-from routeplanner import parse
-from routeplanner import graph
-from routeplanner import finder
+import parse
+import graph
+import finder
 
 def get_stops(filename):
 	stops = parse.get_stops(filename)   
@@ -27,7 +27,7 @@ def search(filename, origin, destination):
 			target = g.get_vertex(destination)
 			path = [target.get_id()]
 			graph.shortest(target, path)
-			print("The shortest path: {}".format(path[::-1]))
+			#print("The shortest path: {}".format(path[::-1]))
 
 			return finder.find_lines_from_route(path[::-1], data)
 	else:
