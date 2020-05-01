@@ -2,8 +2,8 @@ from flask_table import Table, Col
 import parse
 
 class RouteTable(Table):
-	icon = Col('',  th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': ''},)
-	line = Col('Linja',  th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': 'Linja'},)
+	icon = Col('Linja',  th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': 'Linja'},)
+	line = Col('',  th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': ''},)
 	start = Col('Lähtö', th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': 'Lähtö'},)
 	end = Col('Kohde', th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': 'Kohde'},)
 	time = Col('Aika', th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': 'Aika'},)
