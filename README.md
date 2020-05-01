@@ -60,7 +60,7 @@ localhost:5000
 ## Built Using
 
 * [Simple Responsive Table in CSS](https://codepen.io/AllThingsSmitty/pen/MyqmdM) by Matt Smith
-* [attention.js](https://www.cssscript.com/alert-confirm-prompt-popup-attention/) - by janmarkuslanger
+* [attention.js](https://github.com/janmarkuslanger/attention.js) - by janmarkuslanger
 * [select-css](https://github.com/filamentgroup/select-css) - by filament group
 
 ## Author
