@@ -2,64 +2,76 @@ import json
 
 class Stop:
 	def __init__(self, name):
-		self.name = name
+		self.__name = name
+
+	@property
+	def name(self):
+		return self.__name
 
 	def __str__(self):
-		return "[Stop: {}]".format(self.name)
+		return "[Stop: {}]".format(self.__name)
 
 class Road:
 	def __init__(self, start, end, time):
-		self.start = start
-		self.end = end
-		self.time = time
-		self.lines = []
+		self.__start = start
+		self.__end = end
+		self.__time = time
+		self.__lines = []
 
-	def get_start(self):
-		return self.start
+	@property
+	def start(self):
+		return self.__start
 
-	def get_end(self):
-		return self.end
+	@property
+	def end(self):
+		return self.__end
 
-	def get_time(self):
-		return self.time
+	@property
+	def time(self):
+		return self.__time
 
 	def add_line(self, line):
-		self.lines.append(line)
+		self.__lines.append(line)
 
-	def get_lines(self):
-		return self.lines
+	@property
+	def lines(self):
+		return self.__lines
 
 	def __str__(self):
-		return "[From: {}, Where: {}, Time: {}]".format(self.start, self.end, self.time) 
+		return "[From: {}, Where: {}, Time: {}]".format(self.__start, self.__end, self.__time) 
 
 class Line:
 	def __init__(self, name, stops):
-		self.name = name
-		self.stops = stops
+		self.__name = name
+		self.__stops = stops
 
-	def get_name(self):
-		return self.name
+	@property
+	def name(self):
+		return self.__name
 
-	def get_stops(self):
-		return self.stops
+	@property
+	def stops(self):
+		return self.__stops
 
 	def __str__(self):
-		return "[Line: {}, Stops: {}]".format(self.name, self.stops)
+		return "[Line: {}, Stops: {}]".format(self.__name, self.__stops)
 
 class Data:
 	def __init__(self, stops, roads):
-		self.stops = stops
-		self.roads = roads
+		self.__stops = stops
+		self.__roads = roads
 
-	def get_stops(self):
-		return self.stops
+	@property
+	def stops(self):
+		return self.__stops
 
-	def get_roads(self):
-		return self.roads
+	@property
+	def roads(self):
+		return self.__roads
 
 	def get_road(self, start, end):
-		for road in self.roads:
-			if(road.get_start() == start and road.get_end() == end or road.get_start() == end and road.get_end() == start):
+		for road in self.__roads:
+			if(road.start == start and road.end == end or road.start == end and road.end == start):
 				return road
 		return None
 
@@ -100,17 +112,17 @@ def parse(filename):
 	# Use only roads that have lines running, drop unused roads
 	UsedRoads = []
 	for road in Roads:
-		start = road.get_start()
-		end = road.get_end()
-		time = road.get_time()
+		start = road.start
+		end = road.end
+		time = road.time
 
 		usedRoad = Road(start, end, time)
 		addRoad = False
 		for line in Lines:
-			stops = line.get_stops()
-			if start in stops and end in stops:
+			stops = line.stops
+			if road.start in stops and road.end in stops:
 				if(stops.index(start) == stops.index(end) + 1 or stops.index(start) == stops.index(end) - 1):
-					#print("Adding line: {}: {} - {}".format(line.get_name(), start, end))
+					#print("Adding line: {}: {} - {}".format(line.name, start, end))
 					usedRoad.add_line(line)	
 					addRoad = True
 

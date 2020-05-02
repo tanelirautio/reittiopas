@@ -2,38 +2,56 @@ import sys
 
 class Vertex:
     def __init__(self, node):
-        self.id = node
-        self.adjacent = {}
-        self.distance = sys.maxsize
-        self.visited = False
-        self.previous = None
+        self.__id = node
+        self.__adjacent = {}
+        self.__distance = sys.maxsize
+        self.__visited = False
+        self.__previous = None
 
     def add_neighbor(self, neighbor, weight=0):
-        self.adjacent[neighbor] = weight
+        self.__adjacent[neighbor] = weight
 
-    def get_connections(self):
-        return self.adjacent.keys()
-
-    def get_id(self):
-        return self.id
-
+    @property
+    def adjacent(self):
+        return self.__adjacent
+    
+    @property
+    def connections(self):
+        return self.__adjacent.keys()
+    
+    @property
+    def id(self):
+        return self.__id
+    
     def get_weight(self, neighbor):
-        return self.adjacent[neighbor]
+        return self.__adjacent[neighbor]
 
-    def set_distance(self, dist):
-        self.distance = dist
+    @property
+    def distance(self):
+        return self.__distance
 
-    def get_distance(self):
-        return self.distance
+    @distance.setter
+    def distance(self, dist):
+        self.__distance = dist
 
-    def set_previous(self, prev):
-        self.previous = prev
+    @property
+    def previous(self):
+        return self.__previous
+    
+    @previous.setter
+    def previous(self, prev):
+        self.__previous = prev
 
-    def set_visited(self):
-        self.visited = True
+    @property
+    def visited(self):
+        return self.__visited
+    
+    @visited.setter
+    def visited(self, visited):
+        self.__visited = visited
 
     def __str__(self):
-        return str(self.id) + " adjacent: " + str([x.id for x in self.adjacent])
+        return str(self.__id) + " adjacent: " + str([x.id for x in self.__adjacent])
 
     # Relative comparison for <
     def __lt__(self, other):
@@ -45,53 +63,46 @@ class Vertex:
 
 class Graph:
     def __init__(self):
-        self.vert_dict = {}
-        self.num_vertices = 0
+        self.__vert_dict = {}
+        self.__num_vertices = 0
 
     def __iter__(self):
-        return iter(self.vert_dict.values())
+        return iter(self.__vert_dict.values())
 
     def add_vertex(self, node):
-        self.num_vertices = self.num_vertices + 1
+        self.__num_vertices = self.__num_vertices + 1
         new_vertex = Vertex(node)
-        self.vert_dict[node] = new_vertex
+        self.__vert_dict[node] = new_vertex
         return new_vertex
 
     def get_vertex(self, n):
-        if n in self.vert_dict:
-            return self.vert_dict[n]
+        if n in self.__vert_dict:
+            return self.__vert_dict[n]
         else:
             #print("Vertex {} not found in graph".format(n))
             return None
 
     def add_edge(self, frm, to, cost = 0):
-        if frm not in self.vert_dict:
+        if frm not in self.__vert_dict:
             self.add_vertex(frm)
-        if to not in self.vert_dict:
+        if to not in self.__vert_dict:
             self.add_vertex(to)
 
-        self.vert_dict[frm].add_neighbor(self.vert_dict[to], cost)
-        self.vert_dict[to].add_neighbor(self.vert_dict[frm], cost)
+        self.__vert_dict[frm].add_neighbor(self.__vert_dict[to], cost)
+        self.__vert_dict[to].add_neighbor(self.__vert_dict[frm], cost)
 
     def get_vertices(self):
-        return self.vert_dict.keys()
-
-    def set_previous(self, current):
-        self.previous = current
+        return self.__vert_dict.keys()
 
 def create(data):
     g = Graph()
 
-    for stop in data.get_stops():
+    for stop in data.stops:
         #print(stop)
         g.add_vertex(stop)
 
-    for road in data.get_roads():
-        #print(road)
-        start = road.get_start()
-        end = road.get_end()
-        time = road.get_time()
-        g.add_edge(start, end, time)
+    for road in data.roads:
+        g.add_edge(road.start, road.end, road.time)
     return g
 
 ###################
@@ -101,45 +112,45 @@ import heapq
 def shortest(v, path):
     #print("Make shortest path from v.previous")
     if v.previous:
-        path.append(v.previous.get_id())
+        path.append(v.previous.id)
         shortest(v.previous, path)
     return
 
 def dijkstra(aGraph, start, target):
     #print("Dijkstra's shortest path")
     #Set the distance for the start node to zero
-    start.set_distance(0)
+    start.distance = 0
 
     #Put tuple pair into the priority queue
-    unvisited_queue = [(v.get_distance(), v) for v in aGraph]
+    unvisited_queue = [(v.distance, v) for v in aGraph]
     heapq.heapify(unvisited_queue)
 
     while len(unvisited_queue):
         #Pops a vertex with smallest distance
         uv = heapq.heappop(unvisited_queue)
         current = uv[1]
-        current.set_visited()
+        current.visited = True
 
         #for next in v.adjacent:
         for next in current.adjacent:
             #if visited, skip
             if next.visited:
                 continue
-            new_dist = current.get_distance() + current.get_weight(next)
+            new_dist = current.distance + current.get_weight(next)
 
-            if new_dist < next.get_distance():
-                next.set_distance(new_dist)
-                next.set_previous(current)
-                #print("Updated: current = {}, next = {}, new_dist = {}".format(current.get_id(), next.get_id(), next.get_distance()))
+            if new_dist < next.distance:
+                next.distance = new_dist
+                next.previous = current
+                #print("Updated: current = {}, next = {}, new_dist = {}".format(current.id, next.id, next.distance))
             #else:
-                #print("Not updated : current = {}, next = {}, new_dist = {}".format(current.get_id(), next.get_id(), next.get_distance()))
+                #print("Not updated : current = {}, next = {}, new_dist = {}".format(current.id, next.id, next.distance))
 
         #Rebuild heap
         #1. Pop every item
         while len(unvisited_queue):
             heapq.heappop(unvisited_queue)
         #2. Put all vertices not visited into the queue
-        unvisited_queue = [(v.get_distance(), v) for v in aGraph if not v.visited]
+        unvisited_queue = [(v.distance, v) for v in aGraph if not v.visited]
         heapq.heapify(unvisited_queue)
 
 

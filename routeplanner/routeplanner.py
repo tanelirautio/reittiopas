@@ -25,7 +25,7 @@ def search(filename, origin, destination):
 			dijkstra = graph.dijkstra(g, g.get_vertex(origin), g.get_vertex(destination))
 
 			target = g.get_vertex(destination)
-			path = [target.get_id()]
+			path = [target.id]
 			graph.shortest(target, path)
 			#print("The shortest path: {}".format(path[::-1]))
 

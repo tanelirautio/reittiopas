@@ -107,11 +107,10 @@ def find_best_lines(path, data):
 			line_names = []
 			r = data.get_road(start, end)
 			if r:
-				lines = r.get_lines()
-				for line in lines:
-					line_names.append(line.get_name())
-					print("Line: {} - {}, Name: {}, Time: {}".format(start, end, line, r.get_time()))
-			entry = RouteEntry(start, end, r.get_time(), line_names)
+				for line in r.lines:
+					line_names.append(line.name)
+					#print("Line: {} - {}, Name: {}, Time: {}".format(start, end, line, r.time))
+			entry = RouteEntry(start, end, r.time, line_names)
 			route_data.append(entry)
 
 	# Select best line if there are multiple options in a certain road
@@ -180,10 +179,10 @@ def process_route_data(route_data, origin, destination):
 	complete_time = 0
 	for (index, route) in enumerate(route_data):
 		complete_time += route.time
-		if index < len(route_data)-1:
+		if index < len(route_data):
 			if(route.best_line != c_line):
 				c_end = route.start
-
+				#print("Creating TableEntry: " + c_line + ", " + c_start + ", " + c_end)
 				t = TableEntry(c_line, c_start, c_end, c_time, c_intermediates)
 				table_entries.append(t)
 
@@ -196,13 +195,12 @@ def process_route_data(route_data, origin, destination):
 				if route.start != c_start:
 					c_time += route.time
 					c_intermediates.append(route.start)	
-		else:
-			c_end = route.end
-			if(c_start != route.start):
-				c_time += route.time
-				c_intermediates.append(route.start)
-			t = TableEntry(c_line, c_start, c_end, c_time, c_intermediates)
-			table_entries.append(t)
+
+	c_end = route.end
+	#print("Creating TableEntry: " + c_line + ", " + c_start + ", " + c_end)
+	t = TableEntry(c_line, c_start, c_end, c_time, c_intermediates)
+	table_entries.append(t)
+
 
 	table = RouteTable(table_entries)
 	table_html = table.__html__()
@@ -218,13 +216,10 @@ def process_route_data(route_data, origin, destination):
 	index = table_html.find('</table>')
 	table_html = table_html[:index] + summary + table_html[index:]
 
-	# correct possible malformed tags
+	# Correct possible malformed tags
 	table_html = table_html.replace('&lt;', '<').replace('&gt;', '>').replace('&#34;', '"')
 
-	#print("######")
 	#print(table_html)
-	#print("######")
-
 	return table_html
 
 def get_summary_table(changes, time):
