@@ -2,13 +2,23 @@
 
 Routeplanner app made for [Solidabis Code Challenge](https://koodihaaste.solidabis.com/) in the year 2020.
 
+## Demo
+
+The demo of the app is running in Heroku: https://reittiopas.herokuapp.com/
+
 ## Details
 
   * Backend is made with Flask (Python) 
-  * Frontend is just HTML + CSS + Pure JavaScript. 
+  * Frontend is just HTML + CSS + Vanilla JavaScript
   * Development was made in Windows 10
-  * Code and documentation uses English. However, the user interface for app is in Finnish
-  * This is the authors first actual modern web app ever (and it was fun to create!)
+  * Variables, comments and documentation are written in English. However, the user interface for app is in Finnish (assignment was in Finnish)
+
+## About the implementation
+
+  * Application uses Dijkstra's algorithm for searching shortest path from origin stop to destination stop
+  * The roads which don't have any bus lines are discarded before algorithm is used
+  * If transfer has to be made during the trip the preference is given for the line which continues in the route in later road sections
+  * If some routes are served by multiple lines the app just selects one randomly (since the assignment states that you don't have to wait at all when changing buses)
 
 ## Getting Started
 
@@ -51,7 +61,7 @@ Open command prompt and go to project root folder. Run:
 ```
  'run.bat'
 ```
-This will start the built-in development web server in Flask. You can then open your favourite web browser and go to 
+This will start the built-in development web server in Flask. You can then open your favourite web browser and go to: 
 
 ```
 localhost:5000
@@ -62,6 +72,7 @@ localhost:5000
 * [Simple Responsive Table in CSS](https://codepen.io/AllThingsSmitty/pen/MyqmdM) by Matt Smith
 * [attention.js](https://github.com/janmarkuslanger/attention.js) - by janmarkuslanger
 * [select-css](https://github.com/filamentgroup/select-css) - by filament group
+* [Bus icon](https://www.iconsdb.com/black-icons/bus-icon.html) - by iconsDB.com
 
 ## Author
 
