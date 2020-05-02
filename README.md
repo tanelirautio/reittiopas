@@ -26,16 +26,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-  * Python 3 
+  * [Python 3](https://www.python.org/downloads/windows/) 
   * Flask
 
   * (Optional) VirtualEnv
   * (Optional) VirtualEnvWrapper-win
 
-What things you need to install the software and how to install them
-
 ```
-1. Install Python 3 from https://www.python.org/downloads/windows/
+1. Install Python 3
 ```
 
 Optionally at this point you can install VirtualEnv so you can test Python code in encapsulated environment. Below is a brief explanation of steps. Better tutorial for setting up VirtualEnv in Windows can be found [here](https://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/). 
