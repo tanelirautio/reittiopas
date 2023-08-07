@@ -2,10 +2,6 @@
 
 Routeplanner app made for [Solidabis Code Challenge](https://koodihaaste.solidabis.com/) in the year 2020.
 
-## Demo
-
-The demo of the app is running in Heroku: https://reittiopas.herokuapp.com/
-
 ## Details
 
   * Backend is made with Flask (Python) 
@@ -36,20 +32,12 @@ These instructions will get you a copy of the project up and running on your loc
 1. Install Python 3
 ```
 
-Optionally at this point you can install VirtualEnv so you can test Python code in encapsulated environment. Below is a brief explanation of steps. Better tutorial for setting up VirtualEnv in Windows can be found [here](https://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/). 
+Optionally at this point you can install VirtualEnv so you can test Python code in encapsulated environment. 
 
 ```
-2a. Install VirtualEnv with the command 'pip install virtualenv'
-2b. Install VirtualEnvWrapper-win with the command 'pip install virtualenvwrapper-win'
-2c. Create virtual environment for project: 'mkvirtualenv reittiopas' (or whatever name you desire)
-2d. In the root of the reittiopas project run command: 'setprojectdir'
-```
-
-In the project dir you need install some Python libraries:
-
-```
-3. 'pip install flask'
-4. 'pip install flask-table'
+2a. Install virtual environment: 'py -m venv .venv'
+2b. Activate virtual environment: '.venv\Scripts\activate'
+2c. Install the dependencies: 'pip install -r requirements.txt'
 ```
 
 ### Installing
