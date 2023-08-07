@@ -31,7 +31,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Install Python 3
 ```
 
-Optionally at this point you can install VirtualEnv so you can test Python code in encapsulated environment. 
+Optionally at this point you can install venv so you can test Python code in encapsulated environment. 
 
 ```
 2a. Install virtual environment: 'py -m venv .venv'
