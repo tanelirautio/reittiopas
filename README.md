@@ -25,8 +25,7 @@ These instructions will get you a copy of the project up and running on your loc
   * [Python 3](https://www.python.org/downloads/windows/) 
   * Flask
 
-  * (Optional) VirtualEnv
-  * (Optional) VirtualEnvWrapper-win
+  * (Optional) venv module
 
 ```
 1. Install Python 3
