@@ -17,6 +17,23 @@
 <body>
 	<div class="container">
 		<h1>REITTIOPAS</h1>
+		<div class="info-panel">
+			<h2>Mikä tämä on?</h2>
+			<p>
+				Tämä on pieni reittiopas-koodaushaasteprojekti (2020).
+				Valitse lähtöpysäkki ja päätepysäkki — sovellus hakee lyhimmän kelvollisen reitin
+				kuvitteellisessa bussiverkossa.
+			</p>
+			<ul>
+				<li>Valitse lähtö ja määränpää</li>
+				<li>Paina “Hae”</li>
+				<li>Katso reitti ja mahdolliset vaihdot taulukosta</li>
+			</ul>
+			<p class="muted">
+				Data on JSON-muodossa (pysäkit, tiet, linjastot).
+			</p>
+		</div>
+
 		<form method="post" name="route_form" autocomplete="off" onsubmit="return required()" action="/"
 			enctype="application/x-www-form-urlencoded">
 			<div class="row">

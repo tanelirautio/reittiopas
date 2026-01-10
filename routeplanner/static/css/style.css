@@ -4,7 +4,7 @@ body {
 	font-family: sans-serif;
 	width: 100%;
 	font-size: 100%;
-	background-color: #fff
+	/*background-color: #fff*/
 }
 
 h1 {
@@ -16,7 +16,7 @@ h1 {
 	max-width: 900px;
 	margin: 0 auto;
 	padding: 0px;
-	text-align: center;
+	background: #fff;
 }
 
 * {
@@ -30,6 +30,10 @@ h1 {
 	padding: 10px;
 	max-width: 100%;
 	/*border: 1px solid green;*/
+}
+
+.row {
+	text-align: center;
 }
 
 /* Clear floats after the columns */
@@ -56,21 +60,53 @@ input[type=submit] {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	width: 100px; // only for IE8
+	width: 100px;
 	max-width: 100%;
 	border: 2px solid white;
 	border-radius: 10px;
 }
 
-/* Input text fields */
+/* Explanation */
 
-/*
-input[type=text] {
-  border: 2px solid white;
-  border-radius: 20px;
+.info-panel {
+	max-width: 720px;
+	/* readable line length */
+	margin: 16px auto 24px;
+	/* center the block, not the text */
+	padding: 16px 20px;
+
+	background: #fafafa;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+
+	text-align: left;
+	/* THIS fixes the ugliness */
 }
 
-textarea:focus, input:focus{
-    outline: none;
+.info-panel h2 {
+	margin-top: 0;
+	margin-bottom: 8px;
+	font-size: 18px;
 }
-*/
+
+.info-panel p {
+	margin: 8px 0;
+	font-size: 14px;
+	line-height: 1.5;
+	/* critical for readability */
+}
+
+.info-panel ul {
+	margin: 8px 0 8px 20px;
+	padding: 0;
+}
+
+.info-panel li {
+	margin: 4px 0;
+	font-size: 14px;
+}
+
+.info-panel .muted {
+	opacity: 0.7;
+	font-size: 13px;
+}
