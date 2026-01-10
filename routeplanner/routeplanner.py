@@ -1,6 +1,6 @@
-import parse
-import graph
-import finder
+from . import parse
+from . import graph
+from . import finder
 
 def get_stops(filename):
 	stops = parse.get_stops(filename)   

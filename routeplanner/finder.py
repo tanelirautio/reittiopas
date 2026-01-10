@@ -1,5 +1,5 @@
 from flask_table import Table, Col
-import parse
+from . import parse
 
 class RouteTable(Table):
 	icon = Col('Linja',  th_html_attrs={'scope': 'col'}, td_html_attrs={'data-label': 'Linja'},)
