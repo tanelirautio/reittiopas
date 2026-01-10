@@ -1,16 +1,44 @@
 # Reittiopas
 
-Routeplanner app made for [Solidabis Code Challenge](https://koodihaaste.solidabis.com/) in the year 2020.
+Route planner application originally created for the Solidabis Code Challenge in 2020.
+
+## Live Demo
+
+👉 https://reittiopas-j05x.onrender.com
+
+## Background
+
+The task was to implement a simplified public transport route planner based on a predefined data set.
+
+The input data describes a fictional bus network in JSON format, consisting of:
+
+- **Stops** (`pysakit`)
+- **Roads between stops** (`tiet`), each with a travel duration
+- **Bus lines** (`linjastot`), where each line serves a specific sequence of stops and is identified by a color
+
+The challenge was to build an application where the user selects:
+- a **starting stop**
+- a **destination stop**
+
+and the system computes:
+- which **bus line(s)** should be taken
+- where a **line change** is required (if any)
+- which **stops are passed along the route**
+
+The goal was to find the shortest valid route while respecting the available bus lines.  
+Transfers were allowed without waiting time, and roads not served by any bus line were ignored.
+
+The input data uses Finnish naming (`pysakit`, `tiet`, `linjastot`), but the application logic and code are written in English.
 
 ## Details
 
   * Backend is made with Flask (Python) 
   * Frontend is just HTML + CSS + Vanilla JavaScript
-  * Development was made in Windows 10
-  * Variables, comments and documentation are written in English. However, the user interface for app is in Finnish (assignment was in Finnish)
+  * Originally developed on Windows 10
 
 ## About the implementation
 
+  * The routing logic focuses on finding the shortest valid path through the network while respecting the available bus lines
   * Application uses Dijkstra's algorithm for searching shortest path from origin stop to destination stop
   * The roads which don't have any bus lines are discarded before algorithm is used
   * If transfer has to be made during the trip the preference is given for the line which continues in the route in later road sections
@@ -41,16 +69,30 @@ Optionally at this point you can install venv so you can test Python code in enc
 
 ### Installing
 
-Open command prompt and go to project root folder. Run:
+Open a terminal and go to the project root folder.
+
+Activate the virtual environment and run:
 
 ```
- 'run.bat'
+run.bat
 ```
-This will start the built-in development web server in Flask. You can then open your favourite web browser and go to: 
+
+This starts the Flask development server.  
+Open your browser at:
 
 ```
 localhost:5000
 ```
+
+### Running without run.bat (cross-platform)
+
+From the project root:
+
+```
+python -m routeplanner.main
+```
+
+This runs the app as a Python module, which is required for package-relative imports.
 
 ## Built Using
 
@@ -62,6 +104,16 @@ localhost:5000
 ## Author
 
 * **Taneli Rautio**
+
+## Deployment
+
+The app is deployed as a Python web service using Gunicorn.
+The production environment runs the application as a module:
+
+```
+gunicorn routeplanner.main:app
+```
+
 
 ## License
 
