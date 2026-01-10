@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-import routeplanner
+from . import routeplanner
 import os
 import sys
 import json
