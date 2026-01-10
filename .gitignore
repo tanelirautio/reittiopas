@@ -9,3 +9,4 @@ __pycache__/
 *.sublime-project
 *.sublime-workspace
 TODO.txt
+network.dot
