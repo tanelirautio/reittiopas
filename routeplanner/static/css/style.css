@@ -17,9 +17,11 @@ h1 {
 	margin: 0 auto;
 	padding: 0px;
 	text-align: center;
-} 
+}
 
-* { box-sizing: border-box; }
+* {
+	box-sizing: border-box;
+}
 
 /* Create three equal columns that floats next to each other */
 .column {
@@ -40,7 +42,7 @@ h1 {
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
 	.column {
-		width: 100%;  
+		width: 100%;
 	}
 }
 
@@ -55,9 +57,9 @@ input[type=submit] {
 	display: inline-block;
 	font-size: 16px;
 	width: 100px; // only for IE8
-  	max-width: 100%;
+	max-width: 100%;
 	border: 2px solid white;
-  	border-radius: 10px;
+	border-radius: 10px;
 }
 
 /* Input text fields */

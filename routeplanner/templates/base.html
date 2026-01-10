@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ title }}</title>
 	<link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 	<link rel="stylesheet" href="../static/css/style.css">
-	<link rel="stylesheet" href="../static/css/table.css"> 
+	<link rel="stylesheet" href="../static/css/table.css">
 	<link rel="stylesheet" href="../static/css/attention.css">
 	<link rel="stylesheet" href="../static/css/select-css.css">
 	<script type="text/javascript" src="../static/js/attention.js"></script>
@@ -14,71 +15,72 @@
 </head>
 
 <body>
-<div class="container">
-	<h1>REITTIOPAS</h1>
-	<form method="post" name="route_form" autocomplete="off" onsubmit="return required()" action="/" enctype="application/x-www-form-urlencoded">
-	<div class="row">
-		<div class="column" style="background-color:#fff;">
-			<select class="select-css" name="origin" id="origin">
-			</select>
-		</div>
-		<div class="column" style="background-color:#fff;">
-			<select class="select-css" name="destination" id="destination">
-			</select>
-		</div>
-		<div class="column" style="background-color:#fff;">
-			<input type="submit" value="Hae">
-		</div>
+	<div class="container">
+		<h1>REITTIOPAS</h1>
+		<form method="post" name="route_form" autocomplete="off" onsubmit="return required()" action="/"
+			enctype="application/x-www-form-urlencoded">
+			<div class="row">
+				<div class="column" style="background-color:#fff;">
+					<select class="select-css" name="origin" id="origin">
+					</select>
+				</div>
+				<div class="column" style="background-color:#fff;">
+					<select class="select-css" name="destination" id="destination">
+					</select>
+				</div>
+				<div class="column" style="background-color:#fff;">
+					<input type="submit" value="Hae">
+				</div>
+			</div>
+		</form>
 	</div>
-	</form>
-</div>
 
-{% block results %}
-{% endblock %}
+	{% block results %}
+	{% endblock %}
 
-<script>
-var stops = {{stops|tojson}};
-var selected_origin = "{{selected_origin}}";
-var selected_destination = "{{selected_destination}}";
+	<script>
+		var stops = {{ stops| tojson}};
+		var selected_origin = "{{selected_origin}}";
+		var selected_destination = "{{selected_destination}}";
 
-var originSelect = document.getElementById("origin");
-var el = document.createElement("option");
-	el.textContent = "Lähtöpysäkki";
-	el.value = "Lähtöpysäkki";
-	if(selected_origin == "") {
-		el.selected = true;
-	}
-	originSelect.appendChild(el);	
-for(var i = 0; i < stops.length; i++) {
-	var stop = stops[i];
-	var el = document.createElement("option");
-	el.textContent = stop;
-	el.value = stop;
-	if(stop == selected_origin) {
-		el.selected = true;
-	}
-	originSelect.appendChild(el);
-}
+		var originSelect = document.getElementById("origin");
+		var el = document.createElement("option");
+		el.textContent = "Lähtöpysäkki";
+		el.value = "Lähtöpysäkki";
+		if (selected_origin == "") {
+			el.selected = true;
+		}
+		originSelect.appendChild(el);
+		for (var i = 0; i < stops.length; i++) {
+			var stop = stops[i];
+			var el = document.createElement("option");
+			el.textContent = stop;
+			el.value = stop;
+			if (stop == selected_origin) {
+				el.selected = true;
+			}
+			originSelect.appendChild(el);
+		}
 
-var destinationSelect = document.getElementById("destination");
-var el = document.createElement("option");
-	el.textContent = "Päätepysäkki";
-	el.value = "Päätepysäkki";
-	if(selected_destination == "") {
-		el.selected = true;
-	}
-	destinationSelect.appendChild(el);
-for(var i = 0; i < stops.length; i++) {
-	var stop = stops[i];
-	var el = document.createElement("option");
-	el.textContent = stop;
-	el.value = stop;
-		if(stop == selected_destination) {
-		el.selected = true;
-	}
-	destinationSelect.appendChild(el);
-}
+		var destinationSelect = document.getElementById("destination");
+		var el = document.createElement("option");
+		el.textContent = "Päätepysäkki";
+		el.value = "Päätepysäkki";
+		if (selected_destination == "") {
+			el.selected = true;
+		}
+		destinationSelect.appendChild(el);
+		for (var i = 0; i < stops.length; i++) {
+			var stop = stops[i];
+			var el = document.createElement("option");
+			el.textContent = stop;
+			el.value = stop;
+			if (stop == selected_destination) {
+				el.selected = true;
+			}
+			destinationSelect.appendChild(el);
+		}
 
-</script>
+	</script>
 
 </body>
