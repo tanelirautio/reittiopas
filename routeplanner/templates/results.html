@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block results %}
-<div class="container">
-    {{ routetable|safe }}
+<div class="container results">
+    <div class="card results-card">
+        {{ routetable|safe }}
+    </div>
 </div>
 {% endblock %}

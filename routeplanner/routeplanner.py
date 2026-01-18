@@ -3,7 +3,7 @@ from . import graph
 from . import finder
 
 def get_stops(filename):
-	stops = parse.get_stops(filename)   
+	stops = parse.get_stops(filename)
 	return stops
 		
 def search(filename, origin, destination):
@@ -18,9 +18,9 @@ def search(filename, origin, destination):
 		if(origin == destination):
 			return "<p>Lähtö- ja päätepysäkki ovat samat!</p>"
 		else:
-			data = parse.parse(filename)		
+			data = parse.parse(filename)
 			g = graph.create(data)
-			#print_graph(g)		
+			#print_graph(g)
 
 			dijkstra = graph.dijkstra(g, g.get_vertex(origin), g.get_vertex(destination))
 

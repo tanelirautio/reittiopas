@@ -194,7 +194,7 @@ def process_route_data(route_data, origin, destination):
 			else:
 				if route.start != c_start:
 					c_time += route.time
-					c_intermediates.append(route.start)	
+					c_intermediates.append(route.start)
 
 	c_end = route.end
 	#print("Creating TableEntry: " + c_line + ", " + c_start + ", " + c_end)

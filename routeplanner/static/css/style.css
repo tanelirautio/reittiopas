@@ -1,122 +1,192 @@
-body {
-	background: #cacaca;
-	padding: 20px;
-	font-family: sans-serif;
-	width: 100%;
-	font-size: 100%;
-	/*background-color: #fff*/
-}
-
-h1 {
-	text-align: center;
-}
-
-h2 {
-	text-align: center;
-}
-
-.container {
-	margin: auto;
-	max-width: 900px;
-	margin: 0 auto;
-	padding: 0px;
-	background: #fff;
-}
-
 * {
 	box-sizing: border-box;
 }
 
-/* Create three equal columns that floats next to each other */
-/*
-.column {
-	float: left;
-	width: 33.33%;
-	padding: 10px;
-	max-width: 100%;
+:root {
+	--bg: #f4f1ea;
+	--bg-accent: #e9f0ef;
+	--card: #ffffff;
+	--ink: #1d2b2e;
+	--muted: #5c6a6b;
+	--accent: #0b6b74;
+	--accent-strong: #07545b;
+	--border: #dcd6cc;
+	--shadow: 0 12px 28px rgba(21, 29, 35, 0.12);
+	--radius: 16px;
+	--space: 24px;
 }
 
-.row {
-	max-width: 720px;
-	margin: 0 auto;
-}
-*/
-
-.row {
-	max-width: 720px;
-	margin: 0 auto;
-	display: flex;
-	gap: 10px;
-}
-
-.column {
-	flex: 1;
-	padding-bottom: 12px;
-}
-
-
-
-/* Clear floats after the columns */
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-	.column {
-		width: 100%;
-	}
-}
-
-/* Button */
-input[type=submit] {
-	background-color: #008CBA;
-	border: none;
-	color: white;
-	padding: 10px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
+body {
+	margin: 0;
+	min-height: 100vh;
+	padding: 32px 20px 48px;
+	background: linear-gradient(135deg, var(--bg) 0%, var(--bg-accent) 55%, #f7efe5 100%);
+	color: var(--ink);
+	font-family: "Space Grotesk", "Segoe UI", sans-serif;
 	font-size: 16px;
-	width: 100px;
-	max-width: 100%;
-	border: 2px solid white;
-	border-radius: 10px;
 }
 
-/* Explanation */
+h1,
+h2 {
+	margin: 0;
+}
+
+.container {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 0 var(--space);
+}
+
+.hero {
+	padding: 20px 0 8px;
+}
+
+.hero-title {
+	font-size: clamp(32px, 5vw, 48px);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.hero-subtitle {
+	margin-top: 10px;
+	max-width: 520px;
+	color: var(--muted);
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.info-toggle {
+	margin: 4px 0 8px;
+	padding: 8px 14px;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	background: #fff;
+	color: var(--ink);
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.info-toggle:hover {
+	border-color: var(--accent);
+	transform: translateY(-1px);
+}
+
+.card {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 20px 24px;
+}
+
+.controls {
+	margin: 20px auto 12px;
+}
+
+.row {
+	max-width: 760px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+	gap: 16px;
+	align-items: start;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.column--action {
+	min-width: 140px;
+}
+
+.field-label {
+	font-size: 12px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+.field-label--hidden {
+	visibility: hidden;
+	height: 0;
+	margin: 0;
+}
+
+input[type=submit] {
+	background-color: var(--accent);
+	color: #fff;
+	padding: 12px 18px;
+	font-size: 16px;
+	font-weight: 600;
+	border: 0;
+	border-radius: 12px;
+	width: 100%;
+	height: 48px;
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+	box-shadow: 0 8px 16px rgba(11, 107, 116, 0.25);
+}
+
+input[type=submit]:hover {
+	background-color: var(--accent-strong);
+	transform: translateY(-1px);
+}
+
+input[type=submit]:focus {
+	outline: 3px solid rgba(11, 107, 116, 0.3);
+	outline-offset: 2px;
+}
+
+.select-css {
+	border: 1px solid var(--border);
+	box-shadow: none;
+	background-color: #fff;
+	font-weight: 600;
+	color: var(--ink);
+	height: 48px;
+}
+
+.select-css:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px rgba(11, 107, 116, 0.2);
+}
 
 .info-panel {
-	max-width: 720px;
-	/* readable line length */
-	margin: 16px auto 24px;
-	/* center the block, not the text */
-	padding: 16px 20px;
-
-	background: #fafafa;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-
+	max-width: 760px;
+	margin: 16px auto 18px;
+	padding: 20px 24px;
+	background: #fff7ea;
+	border: 1px solid #f0e2cb;
+	border-radius: var(--radius);
 	text-align: left;
-	/* THIS fixes the ugliness */
+	transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+}
+
+.info-panel.is-collapsed {
+	max-height: 0;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	pointer-events: none;
 }
 
 .info-panel h2 {
-	margin-top: 0;
-	margin-bottom: 8px;
+	margin-bottom: 10px;
 	font-size: 18px;
 }
 
 .info-panel p {
 	margin: 8px 0;
 	font-size: 14px;
-	line-height: 1.5;
-	/* critical for readability */
+	line-height: 1.6;
+	color: var(--ink);
 }
 
 .info-panel ul {
@@ -130,24 +200,46 @@ input[type=submit] {
 }
 
 .info-panel .muted {
-	opacity: 0.7;
+	color: var(--muted);
 	font-size: 13px;
 }
 
-/* Map */
+.results {
+	margin-top: 24px;
+	padding-bottom: 40px;
+}
+
+.results-card {
+	padding: 0;
+	overflow: hidden;
+}
 
 .map-wrapper {
 	width: 100%;
 	overflow-x: auto;
-	/* allow horizontal scroll if needed */
 }
 
 .network-map {
 	max-width: 100%;
-	/* never exceed container width */
 	height: auto;
 	display: block;
-
-	/* Prevent SVG from blowing up layout */
 	object-fit: contain;
+}
+
+@media screen and (max-width: 720px) {
+	body {
+		padding: 20px 12px 32px;
+	}
+
+	.container {
+		padding: 0 12px;
+	}
+
+	.row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.column--action {
+		min-width: auto;
+	}
 }
